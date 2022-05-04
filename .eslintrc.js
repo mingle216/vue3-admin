@@ -28,6 +28,7 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    // ESLint与Prettier配合解决代码格式问题
     'space-before-function-paren': 'off',
     'vue/multi-word-component-names': 'off',
     'no-unused-vars': 'warn',
