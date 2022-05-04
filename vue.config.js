@@ -4,7 +4,7 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 module.exports = defineConfig({
-/*   transpileDependencies: true,
+  transpileDependencies: true,
   configureWebpack() {
     return {
       resolve: {
@@ -16,7 +16,7 @@ module.exports = defineConfig({
         }
       }
     }
-  }, */
+  },
   chainWebpack(config) {
     // 设置 svg-sprite-loader
     config.module.rule('svg').exclude.add(resolve('src/icons')).end()
