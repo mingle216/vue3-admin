@@ -26,15 +26,33 @@
 </template>
 
 <script setup>
-import {} from 'vue'
 import Hamburger from '@/components/Hamburger.vue'
 import Breadcrumb from '@/components/Breadcrumb'
 import { useStore } from 'vuex'
+import { ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 
 const store = useStore()
 const logout = () => {
   store.dispatch('user/logout')
 }
+const route = useRoute()
+// 生成数组数据
+const breadcrumbData = ref([])
+const getBreadcrumbData = () => {
+  breadcrumbData.value = route.matched.filter((item) => item.meta && item.meta.title)
+  console.log(breadcrumbData.value)
+}
+// 监听路由变化时触发
+watch(
+  route,
+  () => {
+    getBreadcrumbData()
+  },
+  {
+    immediate: true
+  }
+)
 </script>
 
 <style lang="scss" scoped>
