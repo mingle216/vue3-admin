@@ -5,6 +5,7 @@ import { setItem, getItem, removeAllItem } from '@/utils/storage'
 // 增加 导入路由
 import router from '@/router'
 import { TOKEN } from '@/constant'
+import { setTimeStamp } from '@/utils/auth'
 export default {
   namespaced: true,
   state: () => ({
@@ -32,6 +33,7 @@ export default {
           password: md5(password)
         })
           .then((data) => {
+            setTimeStamp()
             resolve(data)
             console.log(data)
             this.commit('user/setToken', data.token)
