@@ -4,7 +4,7 @@
     <breadcrumb class="breadcrumb-container" />
     <div class="right-menu">
       <theme-picker class="right-menu-item hover-effect"></theme-picker>
-      <lang-select class="right-menu-item hover-effect" />
+      <screenfull class="right-menu-item hover-effect" />
       <!-- 头像 -->
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -30,6 +30,7 @@
 </template>
 
 <script setup>
+import Screenfull from '@/components/Screenfull'
 import ThemePicker from '@/components/ThemeSelect/index'
 import Hamburger from '@/components/Hamburger.vue'
 import Breadcrumb from '@/components/Breadcrumb'
