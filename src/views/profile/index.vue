@@ -30,12 +30,21 @@ import Chapter from './components/Chapter.vue'
 import Feature from './components/Feature.vue'
 import Author from './components/Author.vue'
 import { ref } from 'vue'
+import { watchSwitchLang } from '@/utils/i18n'
 const activeName = ref('feature')
 const featureData = ref([])
 const getFeatureData = async () => {
   featureData.value = await getFeature()
 }
 getFeatureData()
+/**
+* 监听 语言变化，重新获取个人信息
+*/
+watchSwitchLang(() => {
+  if (store.getters.token) {
+    store.dispatch('user/getUserInfo')
+  }
+})
 </script>
 
 <style lang="scss" scoped>
