@@ -3,6 +3,7 @@
     <el-row>
       <el-col :span="6">
         <project-card class="user-card" :features="featureData"></project-card>
+        <feature :features="featureData" />
       </el-col>
       <el-col :span="18">
         <el-card>
@@ -38,11 +39,17 @@ const getFeatureData = async () => {
 }
 getFeatureData()
 /**
-* 监听 语言变化，重新获取个人信息
-*/
+ * 监听 语言变化，重新获取个人信息
+ */
 watchSwitchLang(() => {
   if (store.getters.token) {
     store.dispatch('user/getUserInfo')
+  }
+})
+defineProps({
+  features: {
+    type: Array,
+    required: true
   }
 })
 </script>
