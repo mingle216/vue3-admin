@@ -18,7 +18,13 @@ const i18n = useI18n()
 
 let driver = null
 onMounted(() => {
-  initDriver()
+  driver = new Driver({
+    // 禁止点击蒙版关闭
+    allowClose: false,
+    closeBtnText: i18n.t('msg.guide.close'),
+    nextBtnText: i18n.t('msg.guide.next'),
+    prevBtnText: i18n.t('msg.guide.prev')
+  })
 })
 
 const initDriver = () => {
