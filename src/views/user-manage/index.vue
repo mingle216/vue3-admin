@@ -18,8 +18,9 @@
             <el-image class="avatar" :src="row.avatar" :preview-src-list="[row.avatar]"></el-image>
           </template>
         </el-table-column>
-        <el-table-column :label="$t('msg.excel.role')">
+        <el-table-column :label="$t('msg.excel.openTime')">
           <template #default="{ row }">
+            {{ $filters.dateFilter(row.openTime) }}
             <div v-if="row.role && row.role.length > 0">
               <el-tag v-for="item in row.role" :key="item.id" size="mini">{{ item.title }}</el-tag>
             </div>
