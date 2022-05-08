@@ -62,5 +62,6 @@
       "eslint --fix",
       "git add"
     ]
-  }
+  },
+  "lint": "eslint --fix --ext .js,.vue src"
 }

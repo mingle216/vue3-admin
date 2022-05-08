@@ -8,3 +8,12 @@ export const permissionList = () => {
     url: '/permission/list'
   })
 }
+
+/**
+ * 获取指定用户角色
+ */
+export const userRoles = (id) => {
+  return request({
+    url: `/user-manage/role/${id}`
+  })
+}
