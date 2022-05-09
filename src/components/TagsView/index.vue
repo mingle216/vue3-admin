@@ -14,10 +14,16 @@
         @contextmenu.prevent="openMenu($event, index)"
       >
         {{ tag.title }}
-        <i v-show="!isActive(tag)" class="el-icon-close" @click.prevent.stop="onCloseClick(index)">X </i>
+        <i
+          v-show="!isActive(tag)"
+          class="el-icon-close"
+          @click.prevent.stop="onCloseClick(index)"
+          >X
+        </i>
       </router-link>
     </el-scrollbar>
-    <context-menu v-show="visible" :style="menuStyle" :index="selectIndex"> </context-menu>
+    <context-menu v-show="visible" :style="menuStyle" :index="selectIndex">
+    </context-menu>
   </div>
 </template>
 
@@ -27,6 +33,7 @@ import { ref, reactive, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 const route = useRoute()
+
 // contextMenu 相关
 const selectIndex = ref(0)
 const visible = ref(false)
@@ -44,12 +51,14 @@ const openMenu = (e, index) => {
   selectIndex.value = index
   visible.value = true
 }
+
 /**
  * 是否被选中
  */
 const isActive = (tag) => {
   return tag.path === route.path
 }
+
 /**
  * 关闭 tag 的点击事件
  */
@@ -66,6 +75,7 @@ const onCloseClick = (index) => {
 const closeMenu = () => {
   visible.value = false
 }
+
 /**
  * 监听变化
  */

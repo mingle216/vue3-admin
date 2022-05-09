@@ -2,21 +2,26 @@
   <el-dialog title="提示" :model-value="modelValue" @close="closed" width="22%">
     <div class="center">
       <p class="title">{{ $t('msg.theme.themeColorChange') }}</p>
-      <el-color-picker v-model="mColor" :predefine="predefineColors"></el-color-picker>
+      <el-color-picker
+        v-model="mColor"
+        :predefine="predefineColors"
+      ></el-color-picker>
     </div>
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="closed">{{ $t('msg.universal.cancel') }}</el-button>
-        <el-button type="primary" @click="comfirm">{{ $t('msg.universal.confirm') }}</el-button>
+        <el-button type="primary" @click="comfirm">{{
+          $t('msg.universal.confirm')
+        }}</el-button>
       </span>
     </template>
   </el-dialog>
 </template>
 
 <script setup>
-import { useStore } from 'vuex'
 import { defineEmits, ref } from 'vue'
 import { generateNewStyle, writeNewStyle } from '@/utils/theme'
+import { useStore } from 'vuex'
 defineProps({
   modelValue: {
     type: Boolean,
@@ -42,9 +47,6 @@ const predefineColors = [
   'hsla(209, 100%, 56%, 0.73)',
   '#c7158577'
 ]
-const store = useStore()
-// 默认色值
-const mColor = ref(store.getters.mainColor)
 
 /**
  * 关闭
@@ -52,6 +54,11 @@ const mColor = ref(store.getters.mainColor)
 const closed = () => {
   emits('update:modelValue', false)
 }
+
+const store = useStore()
+// 默认色值
+const mColor = ref(store.getters.mainColor)
+
 /**
  * 确定
  * 1. 修改主题色

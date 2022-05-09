@@ -1,7 +1,12 @@
 <template>
   <div class="author-container">
     <div class="header">
-      <my-avatar image="https://wx-login.oss-cn-shanghai.aliyuncs.com/upload/%E5%A4%B4%E5%83%8F/avatar3.jpg" height="60px" width="60px" :hoverable="false">
+      <my-avatar
+        image="https://wx-login.oss-cn-shanghai.aliyuncs.com/upload/%E5%A4%B4%E5%83%8F/avatar3.jpg"
+        height="60px"
+        width="60px"
+        :hoverable="false"
+      >
         {{ $t('msg.profile.name') }}
       </my-avatar>
       <div class="header-desc">

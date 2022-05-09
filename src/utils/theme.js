@@ -8,7 +8,7 @@ import axios from 'axios'
  * @param {*} elNewStyle  element-plus 的新样式
  * @param {*} isNewStyleTag 是否生成新的 style 标签
  */
-export const writeNewStyle = elNewStyle => {
+export const writeNewStyle = (elNewStyle) => {
   const style = document.createElement('style')
   style.innerText = elNewStyle
   document.head.appendChild(style)
@@ -23,7 +23,10 @@ export const generateNewStyle = async (primaryColor) => {
 
   // 遍历生成的样式表，在 CSS 的原样式中进行全局替换
   Object.keys(colors).forEach((key) => {
-    cssText = cssText.replace(new RegExp('(:|\\s+)' + key, 'g'), '$1' + colors[key])
+    cssText = cssText.replace(
+      new RegExp('(:|\\s+)' + key, 'g'),
+      '$1' + colors[key]
+    )
   })
 
   return cssText

@@ -44,7 +44,11 @@ service.interceptors.response.use(
   },
   (error) => {
     // 处理 token 超时问题
-    if (error.response && error.response.data && error.response.data.code === 401) {
+    if (
+      error.response &&
+      error.response.data &&
+      error.response.data.code === 401
+    ) {
       // token超时
       store.dispatch('user/logout')
     }

@@ -6,32 +6,51 @@
       </el-button>
     </el-card>
     <el-card>
-      <div class="user-info-box" id="userInfoBox">
+      <div id="userInfoBox" class="user-info-box">
         <!-- 标题 -->
         <h2 class="title">{{ $t('msg.userInfo.title') }}</h2>
-
         <div class="header">
           <!-- 头部渲染表格 -->
           <el-descriptions :column="2" border>
-            <el-descriptions-item :label="$t('msg.userInfo.name')">{{ detailData.username }}</el-descriptions-item>
-            <el-descriptions-item :label="$t('msg.userInfo.sex')">{{ detailData.gender }}</el-descriptions-item>
-            <el-descriptions-item :label="$t('msg.userInfo.nation')">{{ detailData.nationality }}</el-descriptions-item>
-            <el-descriptions-item :label="$t('msg.userInfo.mobile')">{{ detailData.mobile }}</el-descriptions-item>
-            <el-descriptions-item :label="$t('msg.userInfo.address')">{{ detailData.address }}</el-descriptions-item>
+            <el-descriptions-item :label="$t('msg.userInfo.name')">{{
+              detailData.username
+            }}</el-descriptions-item>
+            <el-descriptions-item :label="$t('msg.userInfo.sex')">{{
+              detailData.gender
+            }}</el-descriptions-item>
+            <el-descriptions-item :label="$t('msg.userInfo.nation')">{{
+              detailData.nationality
+            }}</el-descriptions-item>
+            <el-descriptions-item :label="$t('msg.userInfo.mobile')">{{
+              detailData.mobile
+            }}</el-descriptions-item>
+            <el-descriptions-item :label="$t('msg.userInfo.address')">{{
+              detailData.address
+            }}</el-descriptions-item>
             <el-descriptions-item :label="$t('msg.userInfo.date')">{{
               $filters.dateFilter(detailData.openTime)
             }}</el-descriptions-item>
             <el-descriptions-item :label="$t('msg.userInfo.remark')" :span="2">
-              <el-tag class="remark" size="small" v-for="(item, index) in detailData.remark" :key="index">{{
-                item
-              }}</el-tag>
+              <el-tag
+                class="remark"
+                size="small"
+                v-for="(item, index) in detailData.remark"
+                :key="index"
+                >{{ item }}</el-tag
+              >
             </el-descriptions-item>
-            <el-descriptions-item :label="$t('msg.userInfo.address')" :span="2">{{
-              detailData.address
-            }}</el-descriptions-item>
+            <el-descriptions-item
+              :label="$t('msg.userInfo.address')"
+              :span="2"
+              >{{ detailData.address }}</el-descriptions-item
+            >
           </el-descriptions>
           <!-- 头像渲染 -->
-          <el-image class="avatar" :src="detailData.avatar" :preview-src-list="[detailData.avatar]"></el-image>
+          <el-image
+            class="avatar"
+            :src="detailData.avatar"
+            :preview-src-list="[detailData.avatar]"
+          ></el-image>
         </div>
         <div class="body">
           <!-- 内容渲染表格 -->
@@ -63,6 +82,7 @@
     </el-card>
   </div>
 </template>
+
 <script setup>
 import { userDetail } from '@/api/user-manage'
 import { watchSwitchLang } from '@/utils/i18n'
@@ -75,14 +95,6 @@ const props = defineProps({
   }
 })
 
-// 数据相关
-const detailData = ref({})
-const getUserDetail = async () => {
-  detailData.value = await userDetail(props.id)
-}
-getUserDetail()
-// 语言切换
-watchSwitchLang(getUserDetail)
 // 打印相关
 const printLoading = ref(false)
 const printObj = {
@@ -99,7 +111,16 @@ const printObj = {
     printLoading.value = false
   }
 }
+// 数据相关
+const detailData = ref({})
+const getUserDetail = async () => {
+  detailData.value = await userDetail(props.id)
+}
+getUserDetail()
+// 语言切换
+watchSwitchLang(getUserDetail)
 </script>
+
 <style lang="scss" scoped>
 .print-box {
   margin-bottom: 20px;

@@ -1,10 +1,20 @@
 <template>
-  <el-dialog :title="$t('msg.excel.title')" :model-value="modelValue" @close="closed" width="30%">
-    <el-input v-model="excelName" :placeholder="$t('msg.excel.placeholder')"></el-input>
+  <el-dialog
+    :title="$t('msg.excel.title')"
+    :model-value="modelValue"
+    @close="closed"
+    width="30%"
+  >
+    <el-input
+      v-model="excelName"
+      :placeholder="$t('msg.excel.placeholder')"
+    ></el-input>
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="closed">{{ $t('msg.excel.close') }}</el-button>
-        <el-button type="primary" @click="onConfirm" :loading="loading">{{ $t('msg.excel.confirm') }}</el-button>
+        <el-button type="primary" @click="onConfirm" :loading="loading">{{
+          $t('msg.excel.confirm')
+        }}</el-button>
       </span>
     </template>
   </el-dialog>

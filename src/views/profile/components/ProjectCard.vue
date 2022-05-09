@@ -9,7 +9,12 @@
     <div class="user-profile">
       <!-- 头像 -->
       <div class="box-center">
-        <my-avatar :image="$store.getters.userInfo.avatar" :height="'100px'" :width="'100px'" :hoverable="false">
+        <my-avatar
+          :image="$store.getters.userInfo.avatar"
+          :height="'100px'"
+          :width="'100px'"
+          :hoverable="false"
+        >
           <div>Hello</div>
           {{ $store.getters.userInfo.title }}
         </my-avatar>
@@ -24,6 +29,7 @@
         </div>
       </div>
     </div>
+
     <!-- 简介 -->
     <div class="project-bio">
       <div class="project-bio-section">
@@ -42,8 +48,9 @@
     <!-- 项目功能区域 -->
     <div class="project-bio-section">
       <div class="project-bio-section-header">
-        <svg-icon icon="reward" />
-        <span>{{ $t('msg.profile.projectFunction') }}</span>
+        <svg-icon icon="reward" /><span>{{
+          $t('msg.profile.projectFunction')
+        }}</span>
       </div>
       <div class="project-bio-section-body">
         <div class="progress-item" v-for="item in features" :key="item.id">
@@ -87,12 +94,14 @@ defineProps({
       font-weight: 400;
     }
   }
+
   .project-bio {
     margin-top: 20px;
     color: #606266;
     span {
       padding-left: 4px;
     }
+
     .project-bio-section {
       margin-bottom: 36px;
       .project-bio-section-header {

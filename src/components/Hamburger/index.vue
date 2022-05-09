@@ -13,7 +13,9 @@ const toggleClick = () => {
   store.commit('app/triggerSidebarOpened')
 }
 
-const icon = computed(() => (store.getters.sidebarOpened ? 'hamburger-opened' : 'hamburger-closed'))
+const icon = computed(() =>
+  store.getters.sidebarOpened ? 'hamburger-opened' : 'hamburger-closed'
+)
 </script>
 
 <style lang="scss" scoped>

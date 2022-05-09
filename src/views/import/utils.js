@@ -7,6 +7,7 @@ export const USER_RELATIONS = {
   角色: 'role',
   开通时间: 'openTime'
 }
+
 /**
  * 解析 excel 导入的时间格式
  */
@@ -16,5 +17,9 @@ export const formatDate = (numb) => {
   const year = time.getFullYear() + ''
   const month = time.getMonth() + 1 + ''
   const date = time.getDate() - 1 + ''
-  return year + '-' + (month < 10 ? '0' + month : month) + '-' + (date < 10 ? '0' + date : date)
+  return (year + '-' +
+    (month < 10 ? '0' + month : month) +
+    '-' +
+    (date < 10 ? '0' + date : date)
+  )
 }
