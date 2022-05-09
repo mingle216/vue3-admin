@@ -1,5 +1,4 @@
 import { createArticle, articleEdit } from '@/api/article'
-
 import { ElMessage } from 'element-plus'
 import i18n from '@/i18n'
 const t = i18n.global.t

@@ -66,10 +66,12 @@ const handleSizeChange = (currentSize) => {
   size.value = currentSize
   getListData()
 }
+
 // 表格拖拽相关
 onMounted(() => {
   initSortable(tableData, getListData)
 })
+
 /**
  * 页码改变触发
  */
@@ -77,11 +79,13 @@ const handleCurrentChange = (currentPage) => {
   page.value = currentPage
   getListData()
 }
+
 // 数据相关
 const tableData = ref([])
 const total = ref(0)
 const page = ref(1)
 const size = ref(5)
+
 // 获取数据的方法
 const getListData = async () => {
   const result = await getArticleList({
@@ -96,6 +100,7 @@ getListData()
 watchSwitchLang(getListData)
 // 处理数据不重新加载的问题
 onActivated(getListData)
+
 // 删除用户
 const i18n = useI18n()
 const onRemoveClick = (row) => {
@@ -136,14 +141,17 @@ const onShowClick = (row) => {
       }
     }
   }
+
   ::v-deep(.el-table__row) {
     cursor: pointer;
   }
+
   ::v-deep(.sortable-ghost) {
     opacity: 0.6;
     color: #fff !important;
     background: #304156 !important;
   }
+
   .pagination {
     margin-top: 20px;
     text-align: center;

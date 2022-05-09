@@ -17,7 +17,9 @@ function relativeTime(val) {
   if (!isNaN(val)) {
     val = parseInt(val)
   }
-  return dayjs().locale(store.getters.language === 'zh' ? 'zh-cn' : 'en').to(dayjs(val))
+  return dayjs()
+    .locale(store.getters.language === 'zh' ? 'zh-cn' : 'en')
+    .to(dayjs(val))
 }
 
 export default (app) => {
